@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recipe_sqflite_getx/config/app_router.dart';
+import 'package:recipe_sqflite_getx/config/theme.dart';
 import 'package:recipe_sqflite_getx/screens/home_screen.dart';
 
-void main() {
+import 'db/db_helper.dart';
+
+void main()async {
+
+ WidgetsFlutterBinding.ensureInitialized();
+  await DBHelper.initDb();
+
+
+
   runApp(const MyApp());
 }
 
@@ -17,11 +26,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        appBarTheme: Themes.themeAppBar,
       ),
-      initialRoute:AppRouters.homeScreen,
-      getPages:AppRouters.routes,
-      home: const HomeScreen(),
+      getPages: AppRouters.routes,
+      home:  HomeScreen(),
     );
   }
 }

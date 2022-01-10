@@ -12,11 +12,11 @@ class AppRouters {
   static final routes = [
     GetPage(
       name: Routes.homeScreen,
-      page: () => const HomeScreen(),
+      page: () =>  HomeScreen(),
     ),
     GetPage(
       name: Routes.addRecipeScreen,
-      page: () => const AddRecipeScreen(),
+      page: () =>  AddRecipeScreen(),
     ),
   ];
 }
