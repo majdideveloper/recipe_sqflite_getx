@@ -19,4 +19,10 @@ class RecipeController extends GetxController{
    
   }
 
+ void deleteRecipe(Recipe recipe)async {
+   
+    await DBHelper.deleteFromDB(recipe);
+    getRecipe();
+  }
+
 }

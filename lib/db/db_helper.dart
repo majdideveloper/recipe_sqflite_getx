@@ -9,18 +9,16 @@ class DBHelper {
   static final String _tableName = 'recipes';
 
   static Database? _db;
-
+// how you can open database in first time
   static Future<void> initDb() async {
     if (_db != null) {
       print('not null db');
       return;
     } else {
       try {
-      // Get a location using getDatabasesPath
+        // Get a location using getDatabasesPath
         var databasesPath = await getDatabasesPath();
-        String _path =  databasesPath+'recipe.db';
-
-      
+        String _path = databasesPath + 'recipe.db';
 
         _db = await openDatabase(
           _path,
@@ -41,11 +39,17 @@ class DBHelper {
     }
   }
 
-   static Future<int> insertInDB(Recipe recipe) async {
+// insert in database
+  static Future<int> insertInDB(Recipe recipe) async {
     return await _db!.insert(_tableName, recipe.toJson());
   }
 
-   static Future<List<Map<String, dynamic>>>queryFromDB() async {
+// get all item in database simple
+  static Future<List<Map<String, dynamic>>> queryFromDB() async {
     return await _db!.query(_tableName);
+  }
+
+  static Future<int> deleteFromDB(Recipe recipe) async {
+    return await _db!.delete(_tableName, where: 'id = ?', whereArgs: [recipe.id]);
   }
 }

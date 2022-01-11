@@ -50,7 +50,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                   controller: _descriptionController,
                 ),
                 CustomTextField(
-                  label: 'imageurl',
+                  label: 'imageUrl',
                   multiLines: false,
                   controller: _imageUrlController,
                 ),
