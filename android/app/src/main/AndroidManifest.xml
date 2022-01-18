@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.recipe_sqflite_getx">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="recipe_sqflite_getx"
         android:name="${applicationName}"

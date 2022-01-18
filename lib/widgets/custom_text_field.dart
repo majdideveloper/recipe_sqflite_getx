@@ -3,12 +3,18 @@ import 'package:recipe_sqflite_getx/config/size_config.dart';
 
 class CustomTextField extends StatelessWidget {
   CustomTextField(
-      {Key? key, required this.label, this.maxLines, required this.multiLines,this.controller})
+      {Key? key,
+      required this.label,
+      this.maxLines,
+      this.labelHint,
+      required this.multiLines,
+      this.controller})
       : super(key: key);
 
   String label = 'Text here';
   int? maxLines = 1;
   bool multiLines = false;
+  String? labelHint;
 
   TextEditingController? controller;
 
@@ -39,23 +45,19 @@ class CustomTextField extends StatelessWidget {
               Expanded(
                 child: TextFormField(
                   cursorColor: Colors.black,
-                 
                   controller: controller,
                   keyboardType: !multiLines
                       ? TextInputType.text
                       : TextInputType.multiline,
                   maxLines: maxLines,
                   decoration: InputDecoration(
-                    
-                    
                     focusedBorder: OutlineInputBorder(
-                      
                       borderSide:
                           const BorderSide(color: Colors.white, width: 2.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ),
                     alignLabelWithHint: true,
-                    hintText: label,
+                    hintText: labelHint,
                   ),
                 ),
               ),

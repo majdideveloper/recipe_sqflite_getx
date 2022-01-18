@@ -50,6 +50,18 @@ class DBHelper {
   }
 
   static Future<int> deleteFromDB(Recipe recipe) async {
-    return await _db!.delete(_tableName, where: 'id = ?', whereArgs: [recipe.id]);
+    return await _db!
+        .delete(_tableName, where: 'id = ?', whereArgs: [recipe.id]);
+  }
+
+  static Future<void> updateInDB(Recipe recipe, String title,
+      String description, String imageUrl, String recipetext) async {
+    await _db!.rawUpdate('''
+    UPDATE $_tableName
+    SET title  = ?, description = ?, imageUrl  = ?,
+    recipe  = ?
+    WHERE id = ?
+    ''', [title, description, imageUrl, recipetext, recipe.id]);
+    
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:get/get.dart';
 import 'package:recipe_sqflite_getx/controllers/recipe_controller.dart';
 import 'package:recipe_sqflite_getx/models/recipe.dart';
@@ -29,6 +29,22 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
+           leadingWidth:45 ,
+        leading: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: CircleAvatar(
+ 
+                backgroundColor: Colors.black,
+                child: IconButton(
+                  iconSize: 28.0,
+                  color: Colors.white,
+                  onPressed: () async {
+                    Get.back();
+                  },
+                  icon: const Icon(Icons.arrow_back),
+                ),
+              ),
+        ),
           title: const Text(
             'Add Recipe',
           ),
@@ -41,21 +57,25 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
               children: [
                 CustomTextField(
                   label: 'title',
+                  labelHint: 'title',
                   multiLines: false,
                   controller: _titleController,
                 ),
                 CustomTextField(
                   label: 'description',
+                   labelHint: 'description',
                   multiLines: false,
                   controller: _descriptionController,
                 ),
                 CustomTextField(
                   label: 'imageUrl',
+                    labelHint: 'imageUrl',
                   multiLines: false,
                   controller: _imageUrlController,
                 ),
                 CustomTextField(
                   label: 'recipe',
+                     labelHint: 'recipe',
                   maxLines: 8,
                   multiLines: true,
                   controller: _recipeTextController,
